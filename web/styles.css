@@ -1,0 +1,396 @@
+/* ==========================================================================
+   Basic & Clean CSS for Event Ticket Booking System
+   Simple, readable, light-themed, straightforward layout
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333333;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+.app-header {
+  background-color: #2563eb; /* Clean Royal Blue */
+  color: #ffffff;
+  padding: 20px 0;
+  border-bottom: 3px solid #1d4ed8;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.app-header p {
+  font-size: 14px;
+  color: #e0e7ff;
+}
+
+/* Tabs Navigation */
+.tabs-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.tabs-nav .container {
+  display: flex;
+  gap: 5px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.tab-btn:hover {
+  color: #2563eb;
+  background-color: #f8fafc;
+}
+
+.tab-btn.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Panel Box */
+.panel-box {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.panel-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.panel-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sub-text {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Data Table */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #374151;
+}
+
+.data-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.data-table tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+.data-table tbody tr.selected-row {
+  background-color: #dbeafe !important;
+  font-weight: 500;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.price-text {
+  color: #059669; /* Emerald Green */
+  font-weight: 600;
+}
+
+/* Category Badge */
+.cat-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* Selected Event Banner */
+.selected-banner {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Form Styles */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.required {
+  color: #dc2626;
+}
+
+.form-group input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.total-price-display {
+  font-size: 20px;
+  font-weight: 700;
+  color: #dc2626; /* Red for emphasis */
+  padding-top: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 15px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #16a34a; /* Green */
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #15803d;
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+/* Empty State Message */
+.empty-msg {
+  text-align: center;
+  padding: 30px 10px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Modal for Receipt */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 15px;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 6px;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 16px;
+  background-color: #f8fafc;
+}
+
+.receipt-pre {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+  border-radius: 4px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: #1f2937;
+}
+
+.modal-footer {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Footer */
+.app-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: auto;
+}

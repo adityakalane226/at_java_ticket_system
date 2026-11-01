@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Ticket Booking System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <h1>Event Ticket Booking System</h1>
+      <p>Select an event, book tickets in ₹ (INR), and manage your reservations</p>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-nav">
+    <div class="container">
+      <button class="tab-btn active" id="tabEventsBtn" onclick="switchTab('events')">Available Events & Booking</button>
+      <button class="tab-btn" id="tabBookingsBtn" onclick="switchTab('bookings')">My Bookings (<span id="bookingCountBadge">0</span>)</button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container main-content">
+
+    <!-- TAB 1: Available Events & Booking -->
+    <section id="eventsTab" class="tab-panel active">
+      
+      <!-- Events Table Section -->
+      <div class="panel-box">
+        <div class="panel-header">
+          <h2>Available Events</h2>
+          <span class="sub-text">Click any row or "Select" button to book tickets</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="eventsTable">
+            <thead>
+              <tr>
+                <th>Event ID</th>
+                <th>Event Title</th>
+                <th>Category</th>
+                <th>Date & Time</th>
+                <th>Venue</th>
+                <th>Price (₹)</th>
+                <th>Available Seats</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="eventsTableBody">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Booking Form Section -->
+      <div class="panel-box booking-box" id="bookingBox">
+        <div class="panel-header">
+          <h2>Book Tickets</h2>
+        </div>
+
+        <div class="selected-banner" id="selectedEventBanner">
+          <strong>Selected Event:</strong> 
+          <span id="selectedEventText">Please select an event from the table above</span>
+        </div>
+
+        <form id="bookingForm" onsubmit="handleBooking(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="customerName">Customer Name <span class="required">*</span></label>
+              <input type="text" id="customerName" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="customerContact">Email or Phone Number <span class="required">*</span></label>
+              <input type="text" id="customerContact" placeholder="e.g. aditya@example.com or 9876543210" required>
+            </div>
+
+            <div class="form-group">
+              <label for="ticketQuantity">Ticket Quantity <span class="required">*</span></label>
+              <input type="number" id="ticketQuantity" min="1" max="50" value="1" oninput="updateTotal()">
+            </div>
+
+            <div class="form-group">
+              <label>Total Price:</label>
+              <div class="total-price-display" id="totalPriceDisplay">₹0.00</div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="resetBookingForm()">Clear Form</button>
+            <button type="submit" class="btn btn-primary" id="bookSubmitBtn">Confirm Booking</button>
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: My Bookings -->
+    <section id="bookingsTab" class="tab-panel">
+      <div class="panel-box">
+        <div class="panel-header flex-between">
+          <div>
+            <h2>Confirmed Bookings</h2>
+            <span class="sub-text">View and manage your booked tickets</span>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="loadBookings()">Refresh List</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="bookingsTable">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Event Title</th>
+                <th>Customer Name</th>
+                <th>Contact</th>
+                <th>Quantity</th>
+                <th>Total Paid (₹)</th>
+                <th>Booking Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookingsTableBody">
+              <!-- Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="noBookingsMsg" class="empty-msg hidden">
+          No bookings made yet. Go to the "Available Events" tab to book tickets.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Simple Ticket Receipt Modal -->
+  <div class="modal-backdrop hidden" id="receiptModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Booking Receipt</h3>
+        <button class="close-modal-btn" onclick="closeReceiptModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <pre class="receipt-pre" id="receiptText"></pre>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.print()">Print Receipt</button>
+        <button class="btn btn-primary" onclick="closeReceiptModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>Event Ticket Booking System &copy; 2026. Built with Java.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
